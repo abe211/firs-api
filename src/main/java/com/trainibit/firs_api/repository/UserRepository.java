@@ -11,8 +11,8 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 
-List<User> findAll();
-User findByUuid(UUID uuid);
+    List<User> findAll();
+    User findByUuid(UUID uuid);
 
 }
 

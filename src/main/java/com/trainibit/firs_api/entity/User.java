@@ -1,12 +1,17 @@
 package com.trainibit.firs_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-
+import lombok.Getter;
+import lombok.Setter;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
-
+@Getter
+@Setter
 @Entity(name = "users")
 public class User {
     @Id
@@ -21,85 +26,32 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-
     @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name= "birthdate")
     private LocalDate birthdate;
 
-    @Column(name= "created_date", nullable = false )
+    @Column(name= "created_date", insertable = false, updatable = false)
     private Timestamp createdDate;
 
-    @Column(name= "updated_date", nullable = false)
+    @Column(name= "updated_date", insertable = false)
     private Timestamp updatedDate;
 
     @Column(name= "uuid")
     private UUID uuid;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    @Column(name = "planet")
+    private String planet;
 
 
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
 
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
-    }
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "Federal_state_id", nullable = false)
+    private FederalState federalState;
 
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
+    @JsonBackReference
 
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Timestamp getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Timestamp updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<RolesByUser> roles = new ArrayList<>();
 }

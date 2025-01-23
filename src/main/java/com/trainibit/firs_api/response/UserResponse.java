@@ -1,8 +1,17 @@
 package com.trainibit.firs_api.response;
 
+import com.trainibit.firs_api.entity.FederalState;
+import com.trainibit.firs_api.entity.RolesByUser;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
+@Getter
+@Setter
 public class UserResponse {
     private String firsName;
     private String lastName;
@@ -11,60 +20,9 @@ public class UserResponse {
     private Timestamp updatedDate;
     private String age;
     private String email;
+    private String planet;
+    private LocalDate birthday;
+    private FederalState federalState;
+    private List<RolesByUser> roles;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirsName() {
-        return firsName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setFirsName(String firsName) {
-        this.firsName = firsName;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Timestamp getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Timestamp updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
 }
