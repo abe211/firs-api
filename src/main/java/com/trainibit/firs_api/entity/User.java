@@ -43,6 +43,9 @@ public class User {
 
     @Column(name = "planet")
     private String planet;
+    @Column(name = "token")
+    private String token;
+
 
 
 

@@ -29,14 +29,16 @@ public class RolesByUser {
     private Role role;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_date", nullable = false)
+    @Column(name = "created_date", insertable = false, updatable = false)
     private Timestamp createdDate;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "updated_date", nullable = false)
+    @Column(name = "updated_date", insertable = false)
     private Timestamp updatedDate;
 
     @Column(name = "uuid", nullable = false)
     private UUID uuid;
 
+//    @Column(name = "activated", nullable = false)
+//    private Boolean activated;
 }
