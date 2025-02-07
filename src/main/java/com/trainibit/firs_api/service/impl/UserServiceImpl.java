@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserResponse> findAll() {
+
         return userMapper.entityListToResponseList(userRepository.findAll()) ;
     }
 
